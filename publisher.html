@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Publisher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="static/js/swfobject.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<p>频道：<span id="channel"></span><button id="connect" style="display: none">连接</button></p>
+<div id="rtmp-publisher">
+    <p>Flash not installed</p>
+</div>
+</body>
+<script type="text/javascript">
+    function  randomChar(l)  {
+        var  x="abcdefghijklmnopqrstuvwxyz";
+        var  tmp="";
+        for(var  i=0;i<  l;i++)  {
+            tmp  +=  x.charAt(Math.ceil(Math.random()*100000000)%x.length);
+        }
+        return  tmp;
+    }
+    $().ready(function(){
+        var flashVars = {
+            streamer: 'rtmp://121.199.14.83/live',
+            file:'1'
+        };
+        var channel = randomChar(5);
+        $('#channel').html(channel);
+        $('#connect').show();
+        //swfobject.embedSWF("static/swf/RtmpPublisher.swf", "rtmp-publisher", "320", "240", "9.0.0", null, flashVars);
+    })
+</script>
+</html>
