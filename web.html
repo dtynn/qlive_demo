@@ -7,7 +7,7 @@
     <script type="text/javascript" src="static/jwplayer6/jwplayer.js" charset="utf-8"></script>
 </head>
 <body>
-<p>频道<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
+<p id="settings">频道：<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
 <div id="myElement" style="display: none">Loading the player ...</div>
 </body>
 <script type="text/javascript">
@@ -22,12 +22,13 @@
             if(channel){
                 $('#myElement').show();
                 var jwVars = {
-                    file: "rtmp://121.199.14.83/live/" + channel,
+                    file: "rtmp://121.199.14.83/hlsdemo/" + channel,
                     autostart: true,
                     height: 240,
                     width: 320
                 };
                 jwplayer("myElement").setup(jwVars);
+                $('#settings').hide();
             } else {
                 alert('填写要观看的频道');
             }

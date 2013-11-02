@@ -7,18 +7,37 @@
 </head>
 
 <body>
-<div id="myElement">Loading the player ...</div>
-<script type="text/javascript">
-    jwplayer("myElement").setup({
-        playlist: [{
-            file:'http://121.199.14.83:8080/hlsdemo/1/index.m3u8',
-            provider:'static/jwplayer6/HLSProvider6.swf',
-            type: "hls"
-        }],
-        //primary: "flash",
-        height: 360,
-        width: 640
-    });
-</script>
+<p id="settings">频道：<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
+<div id="myElement" style="display: none">Loading the player ...</div>
 </body>
+<script type="text/javascript">
+    var timeout = 0;
+    $().ready(function(){
+        $('#channel').keyup(function(){
+            if($(this).val()){
+                $('#connect').show();
+            }
+        });
+        $('#connect').click(function(){
+            var channel = $('#channel').val();
+            if(channel){
+                $('#myElement').show();
+                var url = 'http://121.199.14.83:8080/hlsdemo/data/' + channel + '/index.m3u8';
+                var jwVars = {
+                    playlist: [{
+                        file:url,
+                        provider:'static/jwplayer6/HLSProvider6.swf',
+                        type: "hls"
+                    }],
+                    height: 240,
+                    width: 320
+                };
+                jwplayer("myElement").setup(jwVars);
+                $('#settings').hide();
+            } else {
+                alert('填写要观看的频道');
+            }
+        });
+    })
+</script>
 </html>
