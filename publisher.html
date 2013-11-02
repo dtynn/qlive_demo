@@ -8,7 +8,7 @@
 </head>
 <body>
 <p>频道：<span id="channel"></span><button id="connect" style="display: none">连接</button></p>
-<div id="rtmp-publisher">
+<div id="rtmp-publisher" style="display: none">
     <p>Flash not installed</p>
 </div>
 </body>
@@ -22,14 +22,20 @@
         return  tmp;
     }
     var flashVars = {
-        streamer: 'rtmp://121.199.14.83/live',
+        streamer: 'rtmp://121.199.14.83/live'
     };
     $().ready(function(){
         var channel = randomChar(5);
         flashVars['file'] = channel;
         $('#channel').html(channel);
         $('#connect').show();
-        //swfobject.embedSWF("static/swf/RtmpPublisher.swf", "rtmp-publisher", "320", "240", "9.0.0", null, flashVars);
+        $('#connect').click(function(){
+            if(flashVars['streamer'] && flashVars['file']){
+                $('#rtmp-publisher').show();
+                swfobject.embedSWF("static/swf/RtmpPublisher.swf", "rtmp-publisher", "320", "240", "9.0.0", null, flashVars);
+                $(this).hide();
+            }
+        });
     })
 </script>
 </html>
