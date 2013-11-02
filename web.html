@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web-Player</title>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="static/jwplayer6/jwplayer.js" charset="utf-8"></script>
+</head>
+<body>
+<p>频道<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
+<div id="myElement" style="display: none">Loading the player ...</div>
+</body>
+<script type="text/javascript">
+    $().ready(function(){
+        $('#channel').onkeyup(function(){
+            if($(this).val()){
+                $('#connect').show();
+            }
+        });
+        $('#connect').click(function(){
+            var channel = $('#channel').val();
+            if(channel){
+                $('#myElement').show();
+                var jwVars = {
+                    file: "rtmp://121.199.14.83/live/" + channel,
+                    height: 240,
+                    width: 320
+                };
+                jwplayer("myElement").setup(jwVars);
+            } else {
+                alert('填写要观看的频道');
+            }
+        });
+    })
+</script>
+</html>
