@@ -21,10 +21,10 @@
         }
         return  tmp;
     }
+    var flashVars = {
+        streamer: 'rtmp://121.199.14.83/live',
+    };
     $().ready(function(){
-        var flashVars = {
-            streamer: 'rtmp://121.199.14.83/live',
-        };
         var channel = randomChar(5);
         flashVars['file'] = channel;
         $('#channel').html(channel);
