@@ -32,7 +32,7 @@
         $('#connect').click(function(){
             if(flashVars['streamer'] && flashVars['file']){
                 $('#rtmp-publisher').show();
-                swfobject.embedSWF("static/swf/RtmpPublisher.swf", "rtmp-publisher", "320", "240", "9.0.0", null, flashVars);
+                swfobject.embedSWF("static/swf/RtmpPublisher.swf", "rtmp-publisher", "500", "400", "9.0.0", null, flashVars);
                 $(this).hide();
             }
         });
