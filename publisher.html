@@ -24,9 +24,9 @@
     $().ready(function(){
         var flashVars = {
             streamer: 'rtmp://121.199.14.83/live',
-            file:'1'
         };
         var channel = randomChar(5);
+        flashVars['file'] = channel;
         $('#channel').html(channel);
         $('#connect').show();
         //swfobject.embedSWF("static/swf/RtmpPublisher.swf", "rtmp-publisher", "320", "240", "9.0.0", null, flashVars);
