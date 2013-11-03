@@ -22,7 +22,8 @@
             var channel = $('#channel').val();
             if(channel){
                 $('#myElement').show();
-                var url = 'http://121.199.14.83:8080/hlsdemo/data/' + channel + '/index.m3u8';
+                var ts = (new Date()).valueOf();
+                var url = 'http://live-demo.u.qiniudn.com/' + channel + '.m3u8?' + ts;
                 var jwVars = {
                     playlist: [{
                         file:url,

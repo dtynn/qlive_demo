@@ -22,9 +22,10 @@
             var channel = $('#channel').val();
             if(channel){
                 $('#myElement').show();
+                var ts = (new Date()).valueOf();
                 var jwVars = {
                     playlist: [{
-                        file:channel,
+                        file:channel + '?' + ts,
                         provider:'static/jwplayer6/HLSProvider6.swf',
                         type: "hls"
                     }],
