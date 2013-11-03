@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web-M3U8</title>
+    <script type="text/javascript" src="static/jwplayer6/jwplayer.js" charset="utf-8"></script>
+</head>
+
+<body>
+<p id="settings">地址：<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
+<div id="myElement" style="display: none">Loading the player ...</div>
+</body>
+<script type="text/javascript">
+    var timeout = 0;
+    $().ready(function(){
+        $('#channel').keyup(function(){
+            if($(this).val()){
+                $('#connect').show();
+            }
+        });
+        $('#connect').click(function(){
+            var channel = $('#channel').val();
+            if(channel){
+                $('#myElement').show();
+                var jwVars = {
+                    playlist: [{
+                        file:channel,
+                        provider:'static/jwplayer6/HLSProvider6.swf',
+                        type: "hls"
+                    }],
+                    height: 240,
+                    width: 320
+                };
+                jwplayer("myElement").setup(jwVars);
+                $('#settings').hide();
+            } else {
+                alert('填写要观看的频道');
+            }
+        });
+    })
+</script>
+</html>
