@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Web-M3U8</title>
+    <title>Web-Player</title>
     <script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="static/jwplayer6/jwplayer.js" charset="utf-8"></script>
 </head>
-
 <body>
-<p id="settings">地址：<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
+<p id="settings">频道：<input type="text" id="channel"><button id="connect" style="display: none">连接</button></p>
 <div id="myElement" style="display: none">Loading the player ...</div>
 </body>
 <script type="text/javascript">
@@ -22,14 +21,8 @@
             var channel = $('#channel').val();
             if(channel){
                 $('#myElement').show();
-                var ts = (new Date()).valueOf();
                 var jwVars = {
-                    playlist: [{
-                        //file:channel + '?' + ts,
-                        file:channel,
-                        provider:'static/jwplayer6/HLSProvider6.swf',
-                        type: "hls"
-                    }],
+                    file: channel,
                     autostart: true,
                     height: 240,
                     width: 320
